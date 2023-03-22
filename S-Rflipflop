@@ -1,0 +1,53 @@
+# SR Flip Flop implementation using logic gates
+
+# Ask user to input values for S and R
+s = input("Enter value for S: ")
+r = input("Enter value for R: ")
+
+# Define the necessary gates
+def and_gate(a, b):
+    return a & b
+
+def or_gate(a, b):
+    return a | b
+
+def not_gate(a):
+    return not a
+
+# Initialize the inputs and outputs to 0
+q = 0
+q_bar = 1
+
+# Check hold condition
+if s == '0' and r == '0':
+    q = q
+    q_bar = q_bar
+    print("S-R Flipflop:")
+    print("Output Q =  q")
+    print("Output Q' =  q_bar")
+    print("State:Hold condition")
+
+# Check reset condition
+elif s == '0' and r == '1':
+    q = and_gate(q_bar, 0)
+    q_bar = not_gate(or_gate(q, 0))
+    print("S-R Flipflop:")
+    print("Output Q = ", q)
+    print("Output Q' = ",int(q_bar))
+    print("State:Reset condition")
+
+# Check set condition
+elif s == '1' and r == '0':
+    q = and_gate(1, q_bar)
+    q_bar = not_gate(or_gate(q, 1))
+    print("S-R Flipflop:")
+    print("Output Q = ", q)
+    print("Output Q' = ",int(q_bar))
+    print("State:Set condition")
+
+# Check invalid condition
+else:
+    print("S-R Flipflop:")
+    print("Output Q = ", q)
+    print("Output Q' = ",int(q_bar))
+    print("State:Invalid input")
