@@ -1,0 +1,57 @@
+def AND(x,y):
+    return x & y
+def OR(x,y):
+    return x | y
+def NOT(x):
+    return ~x+2
+def NAND(x,y):
+    return NOT(AND(x, y))
+def NOR(x,y):
+	return NOT(OR(x, y))
+def XOR(x,y):
+    return x ^ y
+def XNOR(x,y):
+    return NOT(XOR(x, y))
+
+print("Select a gate:")
+print("1. AND")
+print("2. OR")
+print("3. NOT")
+print("4. NAND")
+print("5. NOR")
+print("6. XOR")
+print("7. XNOR")
+
+ch=input("Enter your choice:")
+if ch in ['1', '2', '4', '5', '6','7']:
+    x=int(input("Enter X:"))
+    y=int(input("Enter Y:"))
+
+    if ch == '1':
+        Output = AND(x,y)
+        gate = "AND"
+    elif ch == '2':
+        Output = OR(x,y)
+        gate = "OR"
+    elif ch == '4':
+        Output = NAND(x,y)
+        gate = "NAND"
+    elif ch == '5':
+        Output = NOR(x,y)
+        gate = "NOR"
+    elif ch == '6':
+        Output = XOR(x,y)
+        gate = "XOR"
+    else:
+        Output = XNOR(x,y)
+        gate = "XNOR"
+        
+    print("x",gate,"y:", Output)
+
+elif ch == '3':
+    x=int(input("Enter x:"))
+    Output=NOT(x)
+    print("NOT gate output:",Output)  
+    
+else:
+    print("Invalid Input") 
